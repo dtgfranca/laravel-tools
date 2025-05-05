@@ -92,3 +92,6 @@ php artisan cache:clear
 echo "✅ Laravel atualizado (verifique e teste tudo com atenção)"
 
 echo "✅ Rode o teste para verificar se estar tudo ok!!"
+
+echo "✅ Depois de fazer o teste, exclua o arquivo com o nome de backup_pre_update_YYYYMMDD_HHMMSS"
+
