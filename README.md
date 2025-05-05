@@ -24,7 +24,7 @@ chmod +x laravel-tools/*.sh
 ### 3. **Executando o Menu de Ferramentas**
 ```bash
 ./laravel-tools/menu.sh
-```
+``
 
 
 Isso exibirá um menu interativo com as opções disponíveis.
@@ -34,7 +34,7 @@ Isso exibirá um menu interativo com as opções disponíveis.
 ## 🛠️ **Funções Disponíveis**
 
 ### 1. **Atualizar para o laravel 11**
-
+Esse script verifica se o Laravel está na versão 10 e, se estiver, atualiza para o laravel 11:
 ### 1. **Atualizar para o laravel 12**
 
 Esse script verifica se o Laravel está na versão 11 e, se estiver, atualiza para o laravel 12:
