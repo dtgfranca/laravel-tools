@@ -25,8 +25,8 @@ cp -r app config routes $BACKUP_DIR/
 # Atualizando versão do Laravel no composer.json
 echo "📦 Atualizando composer.json..."
 sed -i 's/"laravel\/framework": "[^"]*"/"laravel\/framework": "^12.0"/' composer.json
-sed -i 's/"phpunit\/phpunit": "[^"]*"/"laravel\/framework": "^11.0"/' composer.json
-sed -i 's/"pestphp\/pest": "[^"]*"/"laravel\/framework": "^12.0"/' composer.json
+sed -i 's/"phpunit\/phpunit": "[^"]*"/"phpunit\/phpunit": "^11.0"/' composer.json
+sed -i 's/"pestphp\/pest": "[^"]*"/"pestphp\/pest": "^12.0"/' composer.json
 
 
 # Update de dependências
