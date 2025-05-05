@@ -11,7 +11,7 @@ Para instalar esses scripts em qualquer projeto Laravel, siga os passos abaixo.
 No diretório do seu projeto Laravel, execute:
 
 ```bash
-git clone https://github.com/seuusuario/laravel-tools-scripts.git laravel-tools
+git clone https://github.com/dtgfranca/laravel-tools.git laravel-tools
 ```
 Isso criará uma pasta chamada `laravel-tools/` com todos os scripts necessários.
 
