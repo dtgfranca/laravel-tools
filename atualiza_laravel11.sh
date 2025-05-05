@@ -32,6 +32,8 @@ cp -r app config routes $BACKUP_DIR/
 # Atualizando versão do Laravel no composer.json
 echo "📦 Atualizando composer.json..."
 sed -i 's/"laravel\/framework": "[^"]*"/"laravel\/framework": "^11.0"/' composer.json
+sed -i 's/"adldap2\/adldap2": "[^"]*"/"directorytree\/ldaprecord": "^3.8.1"/' composer.json
+sed -i 's/"spatie\/laravel-permission": "[^"]*"/"spatie\/laravel-permission": "^6.17"/' composer.json
 sed -i 's/"nunomaduro\/collision": "[^"]*"/"nunomaduro\/collision": "^8.1"/' composer.json
 sed -i 's/"laravel\/sanctum": "[^"]*"/"laravel\/sanctum": "^4.0"/' composer.json
 sed -i 's/"laravel\/livewire": "[^"]*"/"laravel\/livewire": "^3.4"/' composer.json
