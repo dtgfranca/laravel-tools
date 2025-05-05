@@ -24,7 +24,7 @@ chmod +x laravel-tools/*.sh
 ### 3. **Executando o Menu de Ferramentas**
 ```bash
 ./laravel-tools/menu.sh
-``
+```
 
 
 Isso exibirá um menu interativo com as opções disponíveis.
