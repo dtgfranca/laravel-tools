@@ -13,7 +13,7 @@ if [ "$LARAVEL_MAJOR_VERSION" -ne 11 ]; then
   echo "❌ Para atualizar para o Laravel 12, precisa estar na versão 11 (detectado: $LARAVEL_MAJOR_VERSION)."
   exit 1
 fi
-echo "🚀 Iniciando atualização para Laravel 11..."
+echo "🚀 Iniciando atualização para Laravel 12..."
 
 # Backup
 DATA=$(date +"%Y%m%d_%H%M%S")
@@ -26,6 +26,7 @@ cp -r app config routes $BACKUP_DIR/
 echo "📦 Atualizando composer.json..."
 sed -i 's/"laravel\/framework": "[^"]*"/"laravel\/framework": "^12.0"/' composer.json
 sed -i 's/"phpunit\/phpunit": "[^"]*"/"phpunit\/phpunit": "^11.0"/' composer.json
+sed -i 's/"tallstackui\/tallstackui": "[^"]*"/"tallstackui\/tallstackui": "^2.5.2"/' composer.json
 sed -i 's/"pestphp\/pest": "[^"]*"/"pestphp\/pest": "^12.0"/' composer.json
 
 

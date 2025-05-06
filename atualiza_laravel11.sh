@@ -48,8 +48,8 @@ sed -i 's/"laravel\/scout": "[^"]*"/"laravel\/scout": "^10.0"/' composer.json
 sed -i 's/"laravel\/spark-stripe": "[^"]*"/"laravel\/spark-stripe": "^5.0"/' composer.json
 sed -i 's/"laravel\/telescope": "[^"]*"/"laravel\/telescope": "^5.0"/' composer.json
 sed -i 's/"livewire\/livewire": "[^"]*"/"livewire\/livewire": "^3.4"/' composer.json
-sed -i 's/"inertiajs\/inertia-laravel": "[^"]*"/"laravel\/dusk": "^1.0"/' composer.json
-sed -i 's/"php": "[^"]*"/"php": "^8.2"/' composer.json
+sed -i 's/"inertiajs\/inertia-laravel": "[^"]*"inertiajs\/inertia-laravel": "^1.0"/' composer.json
+sed -i 's/"php": "[^"]*"/"php": "^8.4"/' composer.json
 
 # Update de dependências
 echo "📦 Rodando composer update..."
