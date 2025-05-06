@@ -28,6 +28,7 @@ sed -i 's/"laravel\/framework": "[^"]*"/"laravel\/framework": "^12.0"/' composer
 sed -i 's/"phpunit\/phpunit": "[^"]*"/"phpunit\/phpunit": "^11.0"/' composer.json
 sed -i 's/"tallstackui\/tallstackui": "[^"]*"/"tallstackui\/tallstackui": "^2.5.2"/' composer.json
 sed -i 's/"pestphp\/pest": "[^"]*"/"pestphp\/pest": "^12.0"/' composer.json
+sed -i 's/"php": "[^"]*"/"php": "^8.4"/' composer.json
 
 
 # Update de dependências
