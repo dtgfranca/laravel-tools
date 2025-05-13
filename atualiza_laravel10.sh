@@ -33,8 +33,7 @@ sed -i 's/"doctrine\/dbal": "[^"]*"/"doctrine\/dbal": "^3.0"/' composer.json
 sed -i 's/"spatie\/laravel-ignition": "[^"]*"/"spatie\/laravel-ignition": "^2.0"/' composer.json
 sed -i 's/"php": "[^"]*"/"php": "^8.1"/' composer.json
 
-echo "A atualização para o phpunit 10 é opcional. Você gostaria de atualizar para o phpunit 10? (s/n)"
-read resposta
+read -p "A atualização para o phpunit 10 é opcional. Você gostaria de atualizar para o phpunit 10? (s/n)" respota
 
 
 if [ "$resposta" = "s" ]; then
