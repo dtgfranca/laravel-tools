@@ -33,6 +33,8 @@ cp -r app config routes $BACKUP_DIR/
 echo "📦 Atualizando composer.json..."
 sed -i 's/"laravel\/framework": "[^"]*"/"laravel\/framework": "^11.0"/' composer.json
 sed -i 's/"adldap2\/adldap2": "[^"]*"/"directorytree\/ldaprecord": "^3.8.1"/' composer.json
+sed -i 's/"adldap2\/adldap2-laravel": "[^"]*"/"directorytree\/ldaprecord": "^3.8.1"/' composer.json
+sed -i 's/"sentry\/sentry-laravel": "[^"]*"/"sentry\/sentry-laravel": "^4.13.0"/' composer.json
 sed -i 's/"spatie\/laravel-permission": "[^"]*"/"spatie\/laravel-permission": "^6.17"/' composer.json
 sed -i 's/"nunomaduro\/collision": "[^"]*"/"nunomaduro\/collision": "^8.1"/' composer.json
 sed -i 's/"laravel\/sanctum": "[^"]*"/"laravel\/sanctum": "^4.0"/' composer.json
@@ -48,7 +50,7 @@ sed -i 's/"laravel\/scout": "[^"]*"/"laravel\/scout": "^10.0"/' composer.json
 sed -i 's/"laravel\/spark-stripe": "[^"]*"/"laravel\/spark-stripe": "^5.0"/' composer.json
 sed -i 's/"laravel\/telescope": "[^"]*"/"laravel\/telescope": "^5.0"/' composer.json
 sed -i 's/"livewire\/livewire": "[^"]*"/"livewire\/livewire": "^3.4"/' composer.json
-sed -i 's/"inertiajs\/inertia-laravel": "[^"]*"inertiajs\/inertia-laravel": "^1.0"/' composer.json
+sed -i 's/"inertiajs\/inertia-laravel": "[^"]*"/"inertiajs\/inertia-laravel": "^1.0"/' composer.json
 sed -i 's/"php": "[^"]*"/"php": "^8.2"/' composer.json
 
 # Update de dependências
