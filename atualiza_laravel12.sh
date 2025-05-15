@@ -25,10 +25,16 @@ cp -r app config routes $BACKUP_DIR/
 # Atualizando versão do Laravel no composer.json
 echo "📦 Atualizando composer.json..."
 sed -i 's/"laravel\/framework": "[^"]*"/"laravel\/framework": "^12.0"/' composer.json
+sed -i 's/"adldap2\/adldap2": "[^"]*"/"directorytree\/ldaprecord": "^3.8.1"/' composer.json
+sed -i 's/"sentry\/sentry-laravel": "[^"]*"/"sentry\/sentry-laravel": "^4.13.0"/' composer.json
+sed -i 's/"larastan\/larastan": "[^"]*"/"larastan\/larastan": "^3.0"/' composer.json
+sed -i 's/"phpstan\/phpstan": "[^"]*"/"phpstan\/phpstan": "^2.0"/' composer.json
+sed -i 's/"nunomaduro\/collision": "[^"]*"/"nunomaduro\/collision": "^8.1"/' composer.json
+sed -i 's/"rector\/rector": "[^"]*"/"rector\/rector": "^2.0"/' composer.json
 sed -i 's/"phpunit\/phpunit": "[^"]*"/"phpunit\/phpunit": "^11.0"/' composer.json
 sed -i 's/"tallstackui\/tallstackui": "[^"]*"/"tallstackui\/tallstackui": "^2.5.2"/' composer.json
 sed -i 's/"pestphp\/pest": "[^"]*"/"pestphp\/pest": "^12.0"/' composer.json
-sed -i 's/"php": "[^"]*"/"php": "^8.4"/' composer.json
+sed -i 's/"php": "[^"]*"/"php": "^8.3"/' composer.json
 
 
 # Update de dependências
