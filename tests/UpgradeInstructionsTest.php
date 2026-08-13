@@ -70,6 +70,12 @@ class UpgradeInstructionsTest extends TestCase
                     $this->assertNotEmpty($instruction->data['constraint']);
                 }
 
+                if ($instruction->type === InstructionType::RequireIfPresent) {
+                    $this->assertNotEmpty($instruction->data['package']);
+                    $this->assertNotEmpty($instruction->data['constraint']);
+                    $this->assertNotEmpty($instruction->data['if']);
+                }
+
                 if ($instruction->type === InstructionType::ReplaceInFile) {
                     $this->assertNotEmpty($instruction->data['file']);
                 }
@@ -85,5 +91,39 @@ class UpgradeInstructionsTest extends TestCase
                 }
             }
         }
+    }
+
+    public function test_only_framework_is_required_unconditionally(): void
+    {
+        foreach ($this->upgrades() as $upgrade) {
+            $required = collect($upgrade->instructions())
+                ->filter(fn ($i) => $i->type === InstructionType::RequirePackage
+                    || $i->type === InstructionType::RequireDevPackage);
+
+            foreach ($required as $instruction) {
+                $this->assertSame(
+                    'laravel/framework',
+                    $instruction->data['package'],
+                    "Upgrade {$upgrade->from()}->{$upgrade->to()} adiciona pacote não condicional"
+                );
+            }
+        }
+    }
+
+    public function test_optional_packages_use_conditional_instructions(): void
+    {
+        $upgrade11 = new Laravel11();
+
+        $breeze = collect($upgrade11->instructions())
+            ->first(fn ($i) => ($i->data['package'] ?? null) === 'laravel/breeze');
+
+        $this->assertNotNull($breeze);
+        $this->assertSame(InstructionType::UpdatePackage, $breeze->type);
+        $this->assertSame('^2.0', $breeze->data['constraint']);
+
+        $spark = collect($upgrade11->instructions())
+            ->first(fn ($i) => ($i->data['package'] ?? null) === 'laravel/spark-stripe');
+
+        $this->assertSame(InstructionType::UpdatePackage, $spark->type);
     }
 }

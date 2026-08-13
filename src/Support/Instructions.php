@@ -34,6 +34,15 @@ final class Instructions
         ]);
     }
 
+    public static function requireIfPresent(string $package, string $constraint, string $ifPackage): Instruction
+    {
+        return new Instruction(InstructionType::RequireIfPresent, [
+            'package' => $package,
+            'constraint' => $constraint,
+            'if' => $ifPackage,
+        ]);
+    }
+
     public static function remove(string $package): Instruction
     {
         return new Instruction(InstructionType::RemovePackage, ['package' => $package]);

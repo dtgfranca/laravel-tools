@@ -22,10 +22,10 @@ class Laravel9 implements Upgrade
         return [
             Instructions::setPhp('^8.0.2'),
             Instructions::require('laravel/framework', '^9.0'),
-            Instructions::require('nunomaduro/collision', '^6.1'),
+            Instructions::update('nunomaduro/collision', '^6.1'),
+            Instructions::requireIfPresent('spatie/laravel-ignition', '^1.0', 'facade/ignition'),
             Instructions::remove('facade/ignition'),
-            Instructions::require('spatie/laravel-ignition', '^1.0'),
-            Instructions::require('pusher/pusher-php-server', '^5.0'),
+            Instructions::update('pusher/pusher-php-server', '^5.0'),
             Instructions::remove('fideloper/proxy'),
             Instructions::replaceInFile(
                 'app/Http/Middleware/TrustProxies.php',

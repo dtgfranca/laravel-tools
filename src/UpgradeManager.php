@@ -87,6 +87,7 @@ class UpgradeManager
                 InstructionType::RequirePackage,
                 InstructionType::RequireDevPackage,
                 InstructionType::UpdatePackage,
+                InstructionType::RequireIfPresent,
                 InstructionType::RemovePackage,
                 InstructionType::ReplaceInFile,
                 InstructionType::ReplaceInFiles,
@@ -134,6 +135,7 @@ class UpgradeManager
             InstructionType::RequirePackage => $this->applyRequire($instruction, $dryRun),
             InstructionType::RequireDevPackage => $this->applyRequireDev($instruction, $dryRun),
             InstructionType::UpdatePackage => $this->applyUpdatePackage($instruction, $dryRun),
+            InstructionType::RequireIfPresent => $this->applyRequireIfPresent($instruction, $dryRun),
             InstructionType::RemovePackage => $this->applyRemove($instruction, $dryRun),
             InstructionType::ReplaceInFile => $this->applyReplaceInFile($instruction, $dryRun),
             InstructionType::ReplaceInFiles => $this->applyReplaceInFiles($instruction, $dryRun),
@@ -203,6 +205,25 @@ class UpgradeManager
         return $updated
             ? ["composer.json: {$package} -> {$constraint}"]
             : ["composer.json: {$package} não está instalado. Versão mantida."];
+    }
+
+    protected function applyRequireIfPresent(Instruction $instruction, bool $dryRun): array
+    {
+        $package = $instruction->data['package'];
+        $constraint = $instruction->data['constraint'];
+        $ifPackage = $instruction->data['if'];
+
+        if ($dryRun) {
+            return ["[dry-run] composer.json: require {$package} -> {$constraint} (se {$ifPackage} estiver presente)"];
+        }
+
+        if (! $this->composer->hasPackage($ifPackage)) {
+            return ["composer.json: {$ifPackage} não está instalado. {$package} não será adicionado."];
+        }
+
+        $this->composer->requirePackage($package, $constraint);
+
+        return ["composer.json: require {$package} -> {$constraint}"];
     }
 
     protected function applyRemove(Instruction $instruction, bool $dryRun): array

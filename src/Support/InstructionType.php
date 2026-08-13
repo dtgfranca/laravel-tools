@@ -8,6 +8,7 @@ enum InstructionType: string
     case RequirePackage = 'require';
     case RequireDevPackage = 'require_dev';
     case UpdatePackage = 'update';
+    case RequireIfPresent = 'require_if_present';
     case RemovePackage = 'remove';
     case ReplaceInFile = 'replace_in_file';
     case ReplaceInFiles = 'replace_in_files';
