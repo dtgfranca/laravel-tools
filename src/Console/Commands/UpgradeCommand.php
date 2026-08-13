@@ -47,7 +47,7 @@ class UpgradeCommand extends Command
             $this->line($line);
         }
 
-        $this->components->success('Atualização concluída.');
+        $this->components->info('Atualização concluída.');
 
         return self::SUCCESS;
     }
