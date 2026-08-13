@@ -8,7 +8,7 @@ dependency bumps, file/class renames, config changes, migration publishing and
 ## Requirements
 
 - PHP 8.2+
-- Laravel 11 or 12 (the package itself; the target project can be older)
+- Laravel 10, 11, 12 or 13 (the package itself; the target project can be older)
 
 > For automated code transformation (AST), install `rector/rector` and
 > `rector/rector-laravel` in the target project. The upgrade works without it,
