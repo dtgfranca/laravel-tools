@@ -1,42 +1,87 @@
-# Laravel Tools Scripts
+# Laravel Tools
 
-Este repositório contém scripts úteis para facilitar tarefas comuns em projetos Laravel. Com esses scripts, você pode verificar a versão do Laravel, rodar migrations, publicar migrations do Sanctum e outras funcionalidades.
+Automated Laravel version upgrade toolkit. This package detects your current
+Laravel version and upgrades your application to the next major version:
+dependency bumps, file/class renames, config changes, migration publishing and
+(optionally) code transformations via [Rector](https://github.com/rectorphp/rector).
 
-## 🚀 Instalação
+## Requirements
 
-Para instalar esses scripts em qualquer projeto Laravel, siga os passos abaixo.
+- PHP 8.2+
+- Laravel 11 or 12 (the package itself; the target project can be older)
 
-### 1. **Clonando o Repositório**
+> For automated code transformation (AST), install `rector/rector` and
+> `rector/rector-laravel` in the target project. The upgrade works without it,
+> skipping only the Rector step.
 
-No diretório do seu projeto Laravel, execute:
+## Installation
 
 ```bash
-git clone https://github.com/dtgfranca/laravel-tools.git laravel-tools
+composer require dtgfranca/laravel-tools
 ```
-Isso criará uma pasta chamada `laravel-tools/` com todos os scripts necessários.
 
-### 2. **Tornando os Scripts Executáveis**
+The service provider is auto-discovered via `extra.laravel.providers`.
 
-Depois de clonar o repositório, torne os scripts executáveis com o comando:
+## Usage
+
+### Check the current Laravel version
+
 ```bash
-chmod +x laravel-tools/*.sh
+php artisan laravel:version
 ```
-### 3. **Executando o Menu de Ferramentas**
+
+### Upgrade interactively
+
 ```bash
-./laravel-tools/menu.sh
+php artisan laravel:upgrade
 ```
 
+You will be prompted to choose the target version.
 
-Isso exibirá um menu interativo com as opções disponíveis.
+### Upgrade directly to a version
 
----
+```bash
+php artisan laravel:upgrade 12
+```
 
-## 🛠️ **Funções Disponíveis**
+### Available options
 
-### 1. **Atualizar para o laravel 11**
-Esse script verifica se o Laravel está na versão 10 e, se estiver, atualiza para o laravel 11:
-### 1. **Atualizar para o laravel 12**
+```bash
+php artisan laravel:upgrade --dry-run        # simulate, change nothing
+php artisan laravel:upgrade 12 --skip-tests  # do not run the test suite
+php artisan laravel:upgrade 12 --skip-backup # do not create a backup
+```
 
-Esse script verifica se o Laravel está na versão 11 e, se estiver, atualiza para o laravel 12:
+## Supported upgrade paths
 
+| From | To |
+|------|----|
+| Laravel 8  | Laravel 9  |
+| Laravel 9  | Laravel 10 |
+| Laravel 10 | Laravel 11 |
+| Laravel 11 | Laravel 12 |
+| Laravel 12 | Laravel 13 |
 
+## What each upgrade does
+
+1. Detects the current version from `vendor/composer/installed.json`.
+2. Creates a backup under `backup_pre_update_<timestamp>/`.
+3. Updates `composer.json` (framework, packages, PHP constraint).
+4. Runs `composer update --with-all-dependencies`.
+5. Applies file/class renames (e.g. `VerifyCsrfToken` → `PreventRequestForgery`).
+6. Runs Rector sets (if installed).
+7. Publishes package migrations (Sanctum, Passport, Cashier, etc.).
+8. Clears caches and runs the test suite.
+
+## Configuration
+
+Publish the config file to customize backup paths, composer command, Rector
+binary and test command:
+
+```bash
+php artisan vendor:publish --tag=laravel-upgrade-config
+```
+
+## Legacy shell scripts
+
+The original bash scripts are kept in the `legacy/` directory for reference.

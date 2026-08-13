@@ -1,0 +1,57 @@
+{
+    "name": "dtgfranca/laravel-tools",
+    "description": "Automated Laravel version upgrade toolkit with code transformation rules (Rector).",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "laravel",
+        "upgrade",
+        "rector",
+        "shift",
+        "artisan"
+    ],
+    "homepage": "https://github.com/dtgfranca/laravel-tools",
+    "support": {
+        "issues": "https://github.com/dtgfranca/laravel-tools/issues",
+        "source": "https://github.com/dtgfranca/laravel-tools"
+    },
+    "authors": [
+        {
+            "name": "dtgfranca"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "illuminate/console": "^11.0|^12.0",
+        "illuminate/filesystem": "^11.0|^12.0",
+        "illuminate/process": "^11.0|^12.0",
+        "illuminate/support": "^11.0|^12.0",
+        "laravel/prompts": "^0.1|^0.2|^0.3"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^9.0|^10.0",
+        "phpunit/phpunit": "^10.5|^11.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "LaravelTools\\Upgrade\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "LaravelTools\\Upgrade\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "LaravelTools\\Upgrade\\UpgradeServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
